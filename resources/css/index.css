@@ -16,6 +16,20 @@ body {
   position: relative;
 }
 
+h1, h3 {
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 2.67rem;
+  font-weight: 700;
+}
+
+p {
+  color: #92857A;
+}
+
 .app-container {
   width: 30rem;
   height: 36.7rem;
@@ -29,17 +43,63 @@ header {
   background-color: #EC755d;
   display: flex;
   justify-content: space-between;
-  padding: 2.25rem;
+  align-items: center;
+  padding-inline: 2.2rem;
+  padding-block: 1.9rem;
+  color: #FFF;
+  border-radius: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+header p {
+  color: inherit;
+  margin-bottom: 0.75rem;
 }
 
 main {
   background-color: #FFFBF6;
   padding: 2.25rem;
+  color: #382314;
+  border-radius: 1.25rem;
+}
+
+.chart {
+  min-height: 178px;
+  text-align: center;
+}
+
+/* Remove when creating the chart */
+.chart p {
+  margin-top: 2rem;
+
+}
+
+hr {
+  border:1px solid #F8E9DD;
+  margin-bottom: 2rem;
 }
 
 .summary {
   display: flex;
   justify-content: space-between;
+  align-items: flex-end;
+}
+
+.summary p {
+  margin-bottom: 0.5rem;
+}
+
+.delta {
+  text-align: right;
+}
+
+.delta p:first-child {
+  color: #382314;
+  font-weight: 700;
+}
+
+.delta p:last-child {
+  margin: 0;
 }
 
 .grid-test {
