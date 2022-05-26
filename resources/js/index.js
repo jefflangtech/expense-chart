@@ -1,8 +1,21 @@
-// fetch('./data.json')
-//   .then(response => {
-//     return response.json()
-//   })
-//   .then(data => console.log(data))
+const expenseColumns = document.querySelectorAll('.exp-col')
+const columnLabel = document.querySelectorAll('.weekday')
+
+const displayData = function(data) {
+  const daysOfWeek = ['sun', 'mon', 'tue', 'wed', 'thur', 'fri', 'sat']
+  const date = new Date()
+  const dayNum = date.getDay()
+  let counter = 0
+  data.forEach(element => {
+    const { day, amount } = { ...element }
+    expenseColumns[counter].children[0].innerText = `$${amount}`
+    columnLabel[counter].innerText = day
+    if(daysOfWeek[dayNum] === day) {
+      expenseColumns[counter].classList.add('current-day')
+    }
+    counter++
+  })
+}
 
 async function getExpenseData() {
   const response = await fetch('./data.json')
@@ -10,16 +23,29 @@ async function getExpenseData() {
   displayData(data)
 }
 
-const displayData = function(data) {
-  data.forEach(element => {
-    console.log(element)
+getExpenseData()
+
+// Event Listeners
+
+expenseColumns.forEach(column => {
+  column.addEventListener('mouseover', () => {
+    column.children[0].classList.remove('hidden')
   })
-}
+})
 
-// getExpenseData()
+expenseColumns.forEach(column => {
+  column.addEventListener('mouseleave', () => {
+    column.children[0].classList.add('hidden')
+  })
+})
 
-// const dataContainer = document.querySelector('.data-container')
-// const para = document.createElement('p')
-// para.innerText = 'test text'
-// dataContainer.appendChild(para)
-// console.dir(para)
+// REVISIT - make hover on the weekday label show the amount as well
+
+// columnLabel.forEach(label => {
+//   label.addEventListener('mouseover', () => {
+//     const gridChildren = label.parentElement.children
+//     gridChildren.forEach(child => {
+//       if 
+//     })
+//   })
+// })
