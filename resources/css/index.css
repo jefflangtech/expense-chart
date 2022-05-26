@@ -1,5 +1,62 @@
-html {
+* {
   box-sizing: border-box;
+}
+
+html {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 18px;
+}
+
+body {
+  background-color: #F8E9DD;
+  width: 100vw;
+  min-width: 100%;
+  height: 100vh;
+  min-height: 100%;
+  position: relative;
+}
+
+.app-container {
+  width: 30rem;
+  height: 36.7rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+header {
+  background-color: #EC755d;
+  display: flex;
+  justify-content: space-between;
+  padding: 2.25rem;
+}
+
+main {
+  background-color: #FFFBF6;
+  padding: 2.25rem;
+}
+
+.summary {
+  display: flex;
+  justify-content: space-between;
+}
+
+.grid-test {
+  width: 600px;
+  height: 400px;
+  border: 1px solid black;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: auto 40px;
+  gap: 10px;
+  align-items: end;
+  text-align: center;
+}
+
+.col {
+  grid-column: 3 / 7;
+  grid-row: 2;
 }
 
 .attribution { 

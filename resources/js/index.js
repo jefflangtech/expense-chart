@@ -18,8 +18,8 @@ const displayData = function(data) {
 
 // getExpenseData()
 
-const dataContainer = document.querySelector('.data-container')
-const para = document.createElement('p')
-para.innerText = 'test text'
-dataContainer.appendChild(para)
-console.dir(para)
+// const dataContainer = document.querySelector('.data-container')
+// const para = document.createElement('p')
+// para.innerText = 'test text'
+// dataContainer.appendChild(para)
+// console.dir(para)
