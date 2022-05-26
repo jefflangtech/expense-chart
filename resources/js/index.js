@@ -1,3 +1,4 @@
+const chart = document.querySelector('#chart')
 const expenseColumns = document.querySelectorAll('.exp-col')
 const columnLabel = document.querySelectorAll('.weekday')
 
@@ -5,6 +6,11 @@ const displayData = function(data) {
   const daysOfWeek = ['sun', 'mon', 'tue', 'wed', 'thur', 'fri', 'sat']
   const date = new Date()
   const dayNum = date.getDay()
+
+
+  const weeklySpend = []
+  const maxColHeight = chart.scrollHeight
+
   let counter = 0
   data.forEach(element => {
     const { day, amount } = { ...element }
@@ -13,6 +19,13 @@ const displayData = function(data) {
     if(daysOfWeek[dayNum] === day) {
       expenseColumns[counter].classList.add('current-day')
     }
+    weeklySpend.push(amount)
+    counter++
+  })
+  counter = 0
+  const maxSpend = Math.max(...weeklySpend)
+  weeklySpend.forEach(spend => {
+    expenseColumns[counter].style.minHeight = Math.floor(spend / maxSpend * maxColHeight) + "px"
     counter++
   })
 }

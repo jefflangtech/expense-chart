@@ -88,6 +88,10 @@ main h1 {
   cursor: pointer;
 }
 
+.exp-col:hover {
+  background-color: #FF9B86;
+}
+
 .col-label {
   position: absolute;
   min-height: 1.5rem;
@@ -155,6 +159,10 @@ hr {
 
 .current-day {
   background-color: #76B5BC;
+}
+
+.current-day:hover {
+  background-color: #B4E0E5;
 }
 
 .hidden {
