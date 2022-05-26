@@ -32,6 +32,7 @@ p {
 
 .app-container {
   width: 30rem;
+  min-width: 19rem;
   height: 36.7rem;
   position: absolute;
   top: 50%;
@@ -158,4 +159,22 @@ hr {
 
 .hidden {
   display: none;
+}
+
+@media (max-width: 580px) {
+  .app-container {
+    width: 90%;
+    min-width: 19rem;
+  }
+  header {
+    padding-inline: 1rem;
+    padding-block: 1.5rem;
+  }
+  main {
+    padding-inline: 1rem;
+  }
+  h1 {
+    font-size: 1.33rem;
+  }
+
 }
