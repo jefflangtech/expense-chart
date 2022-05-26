@@ -4,15 +4,13 @@ const columnLabel = document.querySelectorAll('.weekday')
 
 // Break this function up!!!
 const displayData = function(data) {
-  const daysOfWeek = ['sun', 'mon', 'tue', 'wed', 'thur', 'fri', 'sat']
+  const daysOfWeek = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat']
   const date = new Date()
   const dayNum = date.getDay()
-
 
   const weeklySpend = []
   const amountLabelHeight = 54
   const maxColHeight = chart.scrollHeight - amountLabelHeight
-
 
   let counter = 0
   data.forEach(element => {

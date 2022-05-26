@@ -14,9 +14,6 @@ This is a solution to the [Expenses chart component challenge on Frontend Mentor
   - [Continued development](#continued-development)
   - [Useful resources](#useful-resources)
 - [Author](#author)
-- [Acknowledgments](#acknowledgments)
-
-**Note: Delete this note and update the table of contents based on what sections you keep.**
 
 ## Overview
 
@@ -26,21 +23,11 @@ Users should be able to:
 
 - View the bar chart and hover over the individual bars to see the correct amounts for each day
 - See the current day’s bar highlighted in a different colour to the other bars
-- View the optimal layout for the content depending on their device’s screen size
-- See hover states for all interactive elements on the page
-- **Bonus**: Use the JSON data file provided to dynamically size the bars on the chart
+- Use the JSON data file provided to dynamically size the bars on the chart
 
 ### Screenshot
 
-![](./screenshot.jpg)
-
-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
-
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it. 
-
-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
-
-**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.**
+![Expense Chart Preview](resources/images/expense-chart-preview.png)
 
 ### Links
 
@@ -52,42 +39,54 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 ### Built with
 
 - Semantic HTML5 markup
-- CSS custom properties
-- Flexbox
 - CSS Grid
-- Mobile-first workflow
+- Good ol' vanilla JS
 - [Node.js](https://nodejs.org/en/)
 - [Express](http://expressjs.com/)
 
 ### How I Started
 
-I knew I wanted to create a dynamic component using JSON data, so I had to figure that out first. I wanted simple--just read from the file. To do that I needed a development web server and the quickest and easiest way for me was to setup node.js with express. I then used an app.js file to set the path for my static file resources and send the index.html file upon request.
+I knew I wanted to create a dynamic component using JSON data, so I had to figure that out first. I wanted simple--just read from the file. To do that I needed a development web server and the quickest and easiest way for me was to setup node.js with express. I then used an app.js file to set the path for my static file resources and send the index.html file upon request (the app.js file is included in my github repo for reference).
 
 Everything still works upon pushing the files to a pages Github repo and that was my overall goal with this project.
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+I had seen websites where the bar chart loaded dynamically and the bars were animated as they increased in height to their final value and I wanted to do that with this challenge. I achieved that by assigning default values for height to the bars, and a default value of $0.00 to the label, which were both changed when the data was loaded via JS.
 
-To see how you can add code snippets, see below:
+Below is an example chart with one column. The div with class of "exp-col" is the bar:
 
 ```html
-<h1>Some HTML code I'm proud of</h1>
+<section id="chart">
+  <div class="exp-col">
+    <div class="col-label hidden">$0.00</div>
+  </div>
+  <div class="weekday">sun</div>
+</section>
 ```
 ```css
-.proud-of-this-css {
-  color: papayawhip;
+.exp-col {
+  position: relative;
+  min-height: 0.1rem;
+  width: 100%;
+  background-color: #EC755D;
+  border-radius: 0.35rem;
+  cursor: pointer;
+  transition: min-height 0.5s ease-in;
 }
 ```
+
+A couple of notes on the JS:
+- weeklySpend is an array of just the amounts pulled from the JSON so that the maxSpend can be determined, and that array can be looped over to calculated column height
+- maxColHeight is determined by the height of the chart less the height of the column label
+
 ```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
-}
+const maxSpend = Math.max(...weeklySpend)
+weeklySpend.forEach(spend => {
+  expenseColumns[counter].style.minHeight = 
+  Math.floor(spend / maxSpend * maxColHeight) + "px"
+})
 ```
-
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
-
-**Note: Delete this note and the content within this section and replace with your own learnings.**
 
 ### Continued development
 
@@ -97,8 +96,7 @@ Use this section to outline areas that you want to continue focusing on in futur
 
 ### Useful resources
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
+- [Kevin Powell: Get started with grid](https://youtu.be/8QSqwbSztnA) - This was my first real attempt at grid so I knew I wanted to review before coding. Kevin Powell has been one of the most valuable resources for implementing good CSS and layouts. This video is just 10 minutes long and goes over the basics, and it links to a much longer video for more in depth grid techniques.
 
 ## Author
 
@@ -106,9 +104,3 @@ Use this section to outline areas that you want to continue focusing on in futur
 - Website - [Jeff Lang](https://jefflangtech.github.io/)
 - Frontend Mentor - [@jefflangtech](https://www.frontendmentor.io/profile/jefflangtech)
 - Twitter - [@jefflangtech](https://twitter.com/jefflangtech)
-
-## Acknowledgments
-
-This was made possible by Colt Steele and his web dev bootcamp course on Udemy. I highly recommend this course, especially for anyone like myself, who learns best through visual presentations.
-
-Udemy - [The Web Developer Bootcamp 2022](https://www.udemy.com/share/101W923@xxFkZFDVSbCEQ6X1X7mqip9Q-Z4d-86NY2NRtEvIf3mwXZqxHpoe1NyUaaJhENkIAA==/)
