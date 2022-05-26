@@ -2,6 +2,7 @@ const chart = document.querySelector('#chart')
 const expenseColumns = document.querySelectorAll('.exp-col')
 const columnLabel = document.querySelectorAll('.weekday')
 
+// Break this function up!!!
 const displayData = function(data) {
   const daysOfWeek = ['sun', 'mon', 'tue', 'wed', 'thur', 'fri', 'sat']
   const date = new Date()
@@ -9,7 +10,9 @@ const displayData = function(data) {
 
 
   const weeklySpend = []
-  const maxColHeight = chart.scrollHeight
+  const amountLabelHeight = 54
+  const maxColHeight = chart.scrollHeight - amountLabelHeight
+
 
   let counter = 0
   data.forEach(element => {
@@ -25,7 +28,8 @@ const displayData = function(data) {
   counter = 0
   const maxSpend = Math.max(...weeklySpend)
   weeklySpend.forEach(spend => {
-    expenseColumns[counter].style.minHeight = Math.floor(spend / maxSpend * maxColHeight) + "px"
+    expenseColumns[counter].style.minHeight = 
+    Math.floor(spend / maxSpend * maxColHeight) + "px"
     counter++
   })
 }
@@ -52,13 +56,27 @@ expenseColumns.forEach(column => {
   })
 })
 
-// REVISIT - make hover on the weekday label show the amount as well
 
-// columnLabel.forEach(label => {
-//   label.addEventListener('mouseover', () => {
-//     const gridChildren = label.parentElement.children
-//     gridChildren.forEach(child => {
-//       if 
-//     })
-//   })
-// })
+// Might not include below - these are hover controls 
+// for the weekday labels
+columnLabel.forEach(label => {
+  label.addEventListener('mouseover', () => {
+    const gridChildren = label.parentElement.children
+    for (let x = 0; x < gridChildren.length; x++) {
+      if(gridChildren[x] === label) {
+        expenseColumns[x - 7].children[0].classList.remove('hidden')
+      }
+    }
+  })
+})
+
+columnLabel.forEach(label => {
+  label.addEventListener('mouseleave', () => {
+    const gridChildren = label.parentElement.children
+    for (let x = 0; x < gridChildren.length; x++) {
+      if(gridChildren[x] === label) {
+        expenseColumns[x - 7].children[0].classList.add('hidden')
+      }
+    }
+  })
+})

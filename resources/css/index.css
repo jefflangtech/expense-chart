@@ -61,6 +61,7 @@ main {
   padding: 2.25rem;
   color: #382314;
   border-radius: 1.25rem;
+  min-height: 511px;
 }
 
 main h1 {
@@ -68,7 +69,7 @@ main h1 {
 }
 
 #chart {
-  min-height: 178px;
+  min-height: 196px;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: auto 1rem;
@@ -86,6 +87,7 @@ main h1 {
   background-color: #EC755D;
   border-radius: 0.35rem;
   cursor: pointer;
+  transition: min-height 0.5s ease-in;
 }
 
 .exp-col:hover {
