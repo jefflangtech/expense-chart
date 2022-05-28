@@ -96,6 +96,7 @@ main h1 {
 
 .col-label {
   position: absolute;
+  z-index: 50;
   min-height: 1.5rem;
   min-width: 4rem;
   padding-inline: 0.45rem;
@@ -165,16 +166,44 @@ hr {
   .app-container {
     width: 90%;
     min-width: 19rem;
+    height: 30rem;
   }
   header {
     padding-inline: 1rem;
     padding-block: 1.5rem;
+    border-radius: 0.75rem;
+    margin-bottom: 1rem;
   }
   main {
     padding-inline: 1rem;
+    padding-block: 1.6rem;
+    border-radius: 0.75rem;
+    min-height: 421px;
   }
-  h1 {
+  h1, h3 {
     font-size: 1.33rem;
   }
-
+  main h1 {
+    margin-bottom: 2rem;
+  }
+  h2 {
+    font-size: 1.67rem;
+  }
+  p {
+    font-size: 0.83rem;
+  }
+  #chart {
+    margin-bottom: 1.25rem;
+  }
+  hr {
+    margin-bottom: 1.35rem;
+  }
+  .col-label {
+    font-size: 0.83rem;
+    min-height: 0rem;
+    min-width: 0rem;
+    padding-inline: 0.2rem;
+    padding-block: 0.35rem;
+    left: -0.5rem;
+  }
 }
