@@ -240,7 +240,7 @@ hr {
   }
 }
 
-@media (orientation: landscape) {
+@media (max-height: 810px) and (orientation: landscape) {
   .app-container {
     top: 10%;
     transform: translate(-50%, 0%)
