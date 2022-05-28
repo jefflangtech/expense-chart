@@ -91,9 +91,8 @@ weeklySpend.forEach(spend => {
 
 ### Continued development
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
-
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
+- Media queries and identifying break points went better with this project. I would like to be able to better identify what needs to happen with the layouts, especially for mobile devices.
+- I feel like my JS is a bit hacky, especially with determining and setting the column heights, so I should probably do some refactoring of that code in the future.
 
 ### Useful resources
 
