@@ -1,22 +1,31 @@
 const chart = document.querySelector('#chart')
 const expenseColumns = document.querySelectorAll('.exp-col')
-const columnLabel = document.querySelectorAll('.weekday')
+const dayLabel = document.querySelectorAll('.weekday')
 
-// Break this function up!!!
+const getFontSize = function() {
+  const htmlElem = document.querySelector('html')
+  const style = window.getComputedStyle(htmlElem, null).getPropertyValue('font-size')
+  return parseInt(style)
+}
+
+const dayGetter = function() {
+  const date = new Date()
+  return date.getDay()
+}
+
 const displayData = function(data) {
   const daysOfWeek = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat']
-  const date = new Date()
-  const dayNum = date.getDay()
+  const dayNum = dayGetter()
 
   const weeklySpend = []
-  const amountLabelHeight = 54
+  const amountLabelHeight = (getFontSize() * 3)
   const maxColHeight = chart.scrollHeight - amountLabelHeight
 
   let counter = 0
   data.forEach(element => {
     const { day, amount } = { ...element }
     expenseColumns[counter].children[0].innerText = `$${amount}`
-    columnLabel[counter].innerText = day
+    dayLabel[counter].innerText = day
     if(daysOfWeek[dayNum] === day) {
       expenseColumns[counter].classList.add('current-day')
     }
@@ -41,6 +50,22 @@ async function getExpenseData() {
 getExpenseData()
 
 // Event Listeners
+expenseColumns.forEach(column => {
+  column.addEventListener('touchstart', () => {
+    column.children[0].classList.forEach(item => {
+      if(item === 'hidden') {
+        column.children[0].classList.remove('hidden')
+        expenseColumns.forEach(col => {
+          if(col !== column) {
+            col.children[0].classList.add('hidden')
+          }
+        })
+      } else {
+        column.children[0].classList.add('hidden')
+      }
+    })
+  })
+})
 
 expenseColumns.forEach(column => {
   column.addEventListener('mouseover', () => {
@@ -54,10 +79,7 @@ expenseColumns.forEach(column => {
   })
 })
 
-
-// Might not include below - these are hover controls 
-// for the weekday labels
-columnLabel.forEach(label => {
+dayLabel.forEach(label => {
   label.addEventListener('mouseover', () => {
     const gridChildren = label.parentElement.children
     for (let x = 0; x < gridChildren.length; x++) {
@@ -68,7 +90,7 @@ columnLabel.forEach(label => {
   })
 })
 
-columnLabel.forEach(label => {
+dayLabel.forEach(label => {
   label.addEventListener('mouseleave', () => {
     const gridChildren = label.parentElement.children
     for (let x = 0; x < gridChildren.length; x++) {

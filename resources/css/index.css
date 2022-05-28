@@ -204,6 +204,7 @@ hr {
     min-width: 0rem;
     padding-inline: 0.2rem;
     padding-block: 0.35rem;
+    border-radius: 0.25rem;
     left: -0.5rem;
   }
 }
