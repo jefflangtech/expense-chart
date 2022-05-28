@@ -223,6 +223,10 @@ hr {
 }
 
 @media (max-width: 440px) {
+  .app-container {
+    top: 20%;
+    transform: translate(-50%, -20%);
+  }
   .col-label {
     left: -0.2rem;
     min-width: 2.5rem;
