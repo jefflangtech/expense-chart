@@ -32,7 +32,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](#)
+- Solution URL: [Front End Mentor Solution URL](https://www.frontendmentor.io/solutions/dynamic-expenses-chart-using-json-data-file-_57MmwKdxI)
 - Live Site URL: [jefflangtech.github.io/expense-chart/](https://jefflangtech.github.io/expense-chart/)
 
 ## My process
