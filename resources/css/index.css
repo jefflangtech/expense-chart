@@ -239,3 +239,13 @@ hr {
     min-width: 0;
   }
 }
+
+@media (orientation: landscape) {
+  .app-container {
+    top: 10%;
+    transform: translate(-50%, 0%)
+  }
+  main {
+    margin-bottom: 1rem;
+  }
+}
